@@ -47,4 +47,9 @@ public class CarGameTest {
         assertThat(winners).containsExactly("pobi1", "pobi2");
         assertThat(winners).hasSize(2);
     }
+
+//    @Test
+//    void 자통차는_멈춰있거나_한칸만_움직인다() {
+//
+//    }
 }

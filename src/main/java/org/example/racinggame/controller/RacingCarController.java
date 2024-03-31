@@ -31,7 +31,7 @@ public class RacingCarController {
     }
 
     private void printCarPositions(Cars cars) {
-        cars.getCarList()
+        cars.getCars()
                 .forEach(car -> outputView.printCarPosition(car.getName(), car.getPosition()));
         outputView.newLine();
     }

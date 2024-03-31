@@ -6,45 +6,48 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> carList;
+    private static final int CAR_RANDOM_NUMBER_START = 0;
+    private static final int CAR_RANDOM_NUMBER_END = 9;
+
+    private final List<Car> cars;
 
     public Cars(String inputString) {
-        this.carList = Arrays.stream(inputString.split(","))
+        this.cars = Arrays.stream(inputString.split(","))
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
     public int getCarSize() {
-        return carList.size();
+        return cars.size();
     }
 
     public Car getCarFromName(String carName) {
-        return carList.stream()
-                .filter(car -> car.isCarNameIs(carName))
+        return cars.stream()
+                .filter(car -> car.isSameCarName(carName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("해당 이름의 차량이 없습니다."));
     }
 
     public List<String> selectWinners() {
         int maxPosition = getMaxPosition();
-        return carList.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+        return cars.stream()
+                .filter(car -> car.isCarInMaxPosition(maxPosition))
                 .map(Car::getName)
                 .collect(Collectors.toList());
     }
 
     public void move() {
-        carList.forEach(car ->
-                car.forward(RandomIntegerGenerator.generateEndInclusive(0, 9))
+        cars.forEach(car ->
+                car.forward(RandomIntegerGenerator.generateEndInclusive(CAR_RANDOM_NUMBER_START, CAR_RANDOM_NUMBER_END))
         );
     }
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
     private int getMaxPosition() {
-        return carList.stream()
+        return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(() -> new IllegalArgumentException("차량이 없습니다."));

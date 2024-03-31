@@ -4,6 +4,7 @@ public class Car {
 
     private static final int FORWARD_THRESHOLD = 4;
     private static final int CAR_NAME_MAX_LENGTH = 5;
+
     private final String name;
     private int position;
 
@@ -25,15 +26,19 @@ public class Car {
         }
     }
 
+    public boolean isSameCarName(String targetName) {
+        return this.name.equals(targetName);
+    }
+
+    public boolean isCarInMaxPosition(int maxPos) {
+        return this.position == maxPos;
+    }
+
     public int getPosition() {
         return position;
     }
 
     public String getName() {
         return name;
-    }
-
-    public boolean isCarNameIs(String targetName) {
-        return this.name.equals(targetName);
     }
 }

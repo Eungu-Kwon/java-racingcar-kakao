@@ -12,8 +12,8 @@ public class Calculator {
     }
 
     public int calculate() {
-        String delimiter = CalculatorStringUtils.extractDelimiterWithRegex(string, CalculatorStringUtils.CUSTOM_DELIMITER_REGEX, CalculatorStringUtils.DEFAULT_DELIMITER);
-        String operandString = CalculatorStringUtils.extractOperandStringWithRegex(string, CalculatorStringUtils.CUSTOM_OPERANDS_REGEX);
+        String delimiter = CalculatorStringUtils.extractDelimiterWithRegex(string);
+        String operandString = CalculatorStringUtils.extractOperandStringWithRegex(string);
         String[] operands = operandString.split(delimiter);
 
         return sumStringOperands(operands);

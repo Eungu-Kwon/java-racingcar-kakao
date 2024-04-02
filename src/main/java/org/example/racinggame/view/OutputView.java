@@ -2,13 +2,15 @@ package org.example.racinggame.view;
 
 import java.util.List;
 
+import org.example.racinggame.model.Cars;
+
 public class OutputView {
 
-    public void printWinners(List<String> winners) {
+    public static void printWinners(List<String> winners) {
         System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 
-    public void printCarPosition(String name, int position) {
+    public static void printCarPosition(String name, int position) {
         StringBuilder sb = new StringBuilder();
         sb.append(name)
                 .append(" : ")
@@ -16,12 +18,18 @@ public class OutputView {
         System.out.println(sb);
     }
 
-    public void printResult() {
+    public static void printResult() {
         System.out.println();
         System.out.println("실행 결과");
     }
 
-    public void newLine() {
+    public static void newLine() {
         System.out.println();
+    }
+
+    public static void printCarPositions(Cars cars) {
+        cars.getCars()
+            .forEach(car -> printCarPosition(car.getName(), car.getPosition()));
+        newLine();
     }
 }

@@ -48,8 +48,12 @@ public class CarGameTest {
         assertThat(winners).hasSize(2);
     }
 
-//    @Test
-//    void 자통차는_멈춰있거나_한칸만_움직인다() {
-//
-//    }
+   @Test
+   void 자동차는_멈춰있거나_한칸만_움직인다() {
+       Cars cars = new Cars("pobi1,pobi2,pobi3,pobi4");
+
+       cars.move();
+
+       assertThat(cars.getCars().stream().filter(car -> car.getPosition() >= 0 && car.getPosition() <= 1).count()).isEqualTo(4);
+   }
 }
